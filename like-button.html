@@ -11,7 +11,7 @@
 <script type="text/babel">
   'use strict';
 
-  class LikeButton extends React.Component {
+  /*class LikeButton extends React.Component {
     constructor(props) {
       super(props);
       this.state = {liked: false};
@@ -28,6 +28,19 @@
         </button>
       );
     }
+  }*/
+
+  function LikeButton(){
+    const [liked,setLiked] = React.useState(false);
+    if (liked){
+      return 'You liked this';
+    }
+
+    return (
+      <button onClic = { () => {setLiked(true)}}>
+        함수형으로
+      </button>
+    );
   }
 </script>
 <script type="text/babel">

@@ -1,0 +1,88 @@
+<html>
+<head>
+</head>
+<body>
+<div id="gugudan"></div>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!--<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>-->
+<!--<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>-->
+<script type="text/babel">
+  'use strict';
+
+  /*class LikeButton extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {liked: false};
+    }
+
+    render() {
+      if (this.state.liked) {
+        return 'You liked this.';
+      }
+
+      return (
+        <button onClick={() => this.setState({liked: true})}>
+          Like
+        </button>
+      );
+    }
+  }*/
+
+  function LikeButton(){
+    const [liked,setLiked] = React.useState(false);
+    if (liked){
+      return 'You liked this';
+    }
+
+    return (
+      <button onClick = { () => {setLiked(true)}}>
+        함수 컴포넌트로
+      </button>
+    );
+  }
+
+  function GuGuDan(){
+    const [firstNum,setFirstNum] = React.useState(Math.ceil(Math.random() * 9));
+    const [secondNum,setSecondNum] = React.useState(Math.ceil(Math.random() * 9));
+    const [value,setValue] = React.useState(0);
+    const [result,setResult] = React.useState(false);
+
+    onsubmit = () =>{
+      if(firstNum*secondNum == value ){
+        setResult("정답이다냥")
+      }else{
+        setResult("실패다냥")
+      }
+    }
+
+    if(result == false){
+      return (
+        <div>
+          <div>{firstNum}곱하기 {secondNum}은?</div>
+          <input type="text" onChange = { (e) => {setValue(e.target.value);}} value={value}/> <button onClick={()=>{onsubmit()}}> 입력해라냥 </button> 
+          <div>{result}</div>
+        </div>
+      )
+    }
+
+    return (
+        <div>
+          <div>{firstNum}곱하기 {secondNum}은?</div>
+          <input type="text" onChange = { (e) => {setValue(e.target.value);}} value={value}/> <button onClick={()=>{onsubmit()}}> 입력해라냥 </button> 
+          <div>{result}</div>
+        </div>
+      )
+
+  }
+</script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.querySelector('#gugudan')).render(
+    <div>
+      <GuGuDan/>
+    </div>
+  );
+</script>
+</body>
+</html>
